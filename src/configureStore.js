@@ -1,14 +1,14 @@
-import { createStore, applyMiddleware } from "redux"
+import { createStore, applyMiddleware } from 'redux';
 
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 
 const initialState = {
-  greeting: []
+  greeting: [],
 };
 
 function rootReducer(state, action) {
-  switch (action.type) {
-    case "GET_GREETINGS_SUCCESS":
+  switch (action.type) { // eslint-disable-line
+    case 'GET_GREETINGS_SUCCESS':
       return { greeting: action.json.greeting };
   }
   return state;
@@ -17,8 +17,8 @@ function rootReducer(state, action) {
 export default function configureStore() {
   const store = createStore(
     rootReducer,
-     initialState,
-     applyMiddleware(thunk)
+    initialState,
+    applyMiddleware(thunk),
   );
   return store;
 }
