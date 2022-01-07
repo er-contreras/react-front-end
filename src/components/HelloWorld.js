@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import '../App.css'
 
 const GET_GREETINGS_REQUEST = 'GET_GREETINGS_REQUEST';
 const GET_GREETINGS_SUCCESS = 'GET_GREETINGS_SUCCESS';
