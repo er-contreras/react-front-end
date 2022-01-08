@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Hello front end app
+# hello-react-front-end
 
-> Build a front end web app using react.
+> Here we have been working with an API using ruby on rails. To achieve this we have been fetching the api as 'http://127.0.0.1:3000/api/v1/greetings/index'.
 
 ## Built With
 
