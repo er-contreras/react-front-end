@@ -23,8 +23,7 @@ function getGreetings() {
   };
 }
 
-function HelloWorld(props) {
-  const { greeting } = props;
+function HelloWorld({ greetingFromApp, greeting, getGreetings }) {
   const greetingsList = greeting;
 
   return (
@@ -32,9 +31,9 @@ function HelloWorld(props) {
       <div className="getGreetings">
         Greetings:
         {' '}
-        { props.greeting_from_app }
+        { greetingFromApp }
 
-        <button className="getGreetingsBtn" onClick={() => props.getGreetings()}>getGreetings</button>
+        <button type="button" className="getGreetingsBtn" onClick={() => getGreetings()}>getGreetings</button>
         <br />
 
         <p>{ greetingsList }</p>
@@ -50,8 +49,9 @@ const structuredSelector = createStructuredSelector({
 const mapDispatchToProps = { getGreetings };
 
 HelloWorld.propTypes = {
-  // greeting: PropTypes.string,
-  greeting: PropTypes.array,
+  getGreetings: PropTypes.string.isRequired,
+  greetingFromApp: PropTypes.string.isRequired,
+  greeting: PropTypes.string.isRequired,
 };
 
 export default connect(structuredSelector, mapDispatchToProps)(HelloWorld);
