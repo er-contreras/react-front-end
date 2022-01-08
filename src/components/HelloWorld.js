@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import '../App.css';
+import PropTypes from 'prop-types';
 
 const GET_GREETINGS_REQUEST = 'GET_GREETINGS_REQUEST';
 const GET_GREETINGS_SUCCESS = 'GET_GREETINGS_SUCCESS';
@@ -18,12 +19,10 @@ function getGreetings() {
     dispatch({ type: GET_GREETINGS_REQUEST });
     return fetch('http://127.0.0.1:3000/api/v1/greetings/index')
       .then((response) => response.json())
-      .then((json) => dispatch(getGreetingsSuccess(json)))
-      .catch((error) => console.log(error)); // eslint-disable-line
+      .then((json) => dispatch(getGreetingsSuccess(json)));
   };
 }
 
-/* eslint-disable */
 function HelloWorld(props) {
   const { greeting } = props;
   const greetingsList = greeting;
@@ -33,7 +32,7 @@ function HelloWorld(props) {
       <div className="getGreetings">
         Greetings:
         {' '}
-        { props.greeting_from_app}
+        { props.greeting_from_app }
 
         <button className="getGreetingsBtn" onClick={() => props.getGreetings()}>getGreetings</button>
         <br />
@@ -49,5 +48,10 @@ const structuredSelector = createStructuredSelector({
 });
 
 const mapDispatchToProps = { getGreetings };
+
+HelloWorld.propTypes = {
+  // greeting: PropTypes.string,
+  greeting: PropTypes.array,
+};
 
 export default connect(structuredSelector, mapDispatchToProps)(HelloWorld);

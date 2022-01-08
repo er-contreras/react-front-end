@@ -7,11 +7,12 @@ const initialState = {
 };
 
 function rootReducer(state, action) {
-  switch (action.type) { // eslint-disable-line
+  switch (action.type) {
     case 'GET_GREETINGS_SUCCESS':
       return { greeting: action.json.greeting };
+    default:
+      return state;
   }
-  return state;
 }
 
 export default function configureStore() {
